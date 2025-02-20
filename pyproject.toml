@@ -1,0 +1,37 @@
+[project]
+name = "web-crawler"
+version = "0.1.0"
+description = "Web Crawler "
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "crawler",
+    "bs4>=0.0.2",
+    "fastapi[standard]>=0.115.6",
+    "uvicorn>=0.34.0",
+    "asyncio>=3.4.3",
+    "aiohttp>=3.11.11",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "debugpy>=1.8.12",
+    "mypy>=1.14.1",
+    "pytest-asyncio>=0.25.2",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "pytest>=8.3.4",
+    "ruff>=0.9.3",
+]
+
+[tool.uv.sources]
+crawler = { workspace = true }
+
+[tool.uv.workspace]
+members = [ "packages/*" ]
+exclude = [ 
+    "**/__pycache__",
+    "**/*.pyc",
+    "**/*.pyd",
+    "**/*.so",
+]

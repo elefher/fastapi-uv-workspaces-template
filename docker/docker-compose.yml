@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      target: development
+    ports:
+      - 8000:8000
+      - 5678:5678
+    volumes:
+      - ..:/app
+    environment:
+      - PYTHONPATH=/app
+      - ENVIRONMENT=development
+    command: ["uv", "run", "uvicorn", "app.main:app_", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    networks:
+      - main-network
+    depends_on:
+      - pg-db
+  pg-db:
+    image: postgres:16
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=main_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_db:/var/lib/postgresql/data
+    networks:
+      - main-network
+
+networks:
+  main-network:
+    driver: bridge
+
+volumes:
+  pg_db:
+    driver: local 

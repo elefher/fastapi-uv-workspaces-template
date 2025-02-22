@@ -1,6 +1,6 @@
 # 🕷️ Crawler Package
 
-A powerful and efficient web crawler service built with FastAPI and GraphQL.
+A web crawler service built with FastAPI and GraphQL.
 
 ## 🚀 Features
 

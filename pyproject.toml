@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
     "crawler",
+    "pg",
     "bs4>=0.0.2",
     "fastapi[standard]>=0.115.6",
     "uvicorn>=0.34.0",
@@ -26,9 +27,10 @@ dev-dependencies = [
 
 [tool.uv.sources]
 crawler = { workspace = true }
+pg = { workspace = true }
 
 [tool.uv.workspace]
-members = [ "packages/*" ]
+members = [ "packages/crawler", "packages/storage/*" ]
 exclude = [ 
     "**/__pycache__",
     "**/*.pyc",

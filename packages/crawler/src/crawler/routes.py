@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
 
-
 router = APIRouter(
     prefix="/crawl",
     responses={404: {"description": "Not found"}},
